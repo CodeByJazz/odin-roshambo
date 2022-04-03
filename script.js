@@ -8,59 +8,69 @@ function computerPlay() {
   return shapes[Math.floor(Math.random() * 3)];
 }
 
-//create a function called playerSelection
-//store data inside a const variable called playerSelection
-//make user input case-insensitive by converting input to lowercase
-//return playerSelection
-
-function playerSelection() {
-  const playerSelection = prompt("Rock, Paper, Scissors, SHOOT!").toLowerCase();
-  return playerSelection;
-}
-
-//assign computerPlay to a constant variable called computerSelection
-
-const computerSelection = computerPlay();
-
 //create a function that plays a round of Rock Paper Scissors
-//set two parameters for the function: playerSelection and computerSelection
-//create a conditional statement with all possible player outcomes
-//use the AND && operator to run the code if both operands are true
-//
 
 function playRound(playerSelection, computerSelection) {
   //rock choice
-  if (playerSelection == "rock" && computerSelection == "scissors") {
-    return "You Win! Rock beats scissors!";
-  } else if (playerSelection === "rock" && computerSelection === "paper") {
-    return "You Lose! Paper beats rock.";
-  } else if (playerSelection === "rock" && computerSelection === "rock") {
-    return "Its a Draw! Try again.";
+  if (playerSelection === computerSelection) {
+    return draw;
+  } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    return playerWinRound;
   }
   //paper choice
   else if (playerSelection === "paper" && computerSelection === "rock") {
-    return "You win! Paper beats rock!";
-  } else if (playerSelection === "paper" && computerSelection === "scissors") {
-    return "You Lose. Scissors beats paper";
-  } else if (playerSelection === "paper" && computerSelection === "paper") {
-    return "It's a Draw! Try again.";
+    return playerWinRound;
   }
   //scissors choice
   else if (playerSelection === "scissors" && computerSelection === "paper") {
-    return "You win! Scissors beats paper!";
-  } else if (playerSelection === "scissors" && computerSelection === "rock") {
-    return "You Lose. Rock beats scissors";
-  } else if (
-    playerSelection === "scissors" &&
-    computerSelection === "scissors"
-  ) {
-    return "It's a Draw! Try again.";
+    return playerWinRound;
   } else {
-    return "Something went horribly wrong.";
+    return computerWinRound;
   }
 }
 
-// invoke the function in the console
-console.log(playRound(playerSelection(), computerSelection));
-//return computerSelection
-console.log(computerSelection);
+//create a variable for playerScore
+//create a variable for computerScore
+//create a variable for a draw
+
+let playerScore = 0;
+let computerScore = 0;
+let drawScore = 0;
+
+//create a variable for the outcomes of each round/game
+
+let playerWinRound = "Player wins this round!";
+let computerWinRound = "Computer wins this round!";
+let draw = "It's a draw. Try again!";
+let playerWinGame = "Congratulations! You win the game!";
+let computerWinGame = "You Lose. Computer wins the game!";
+
+//create a loop that plays 5 rounds of roshambo,
+//asks player for a selection with the prompt function
+//logs the result of each round to the console
+//keeps score of each player
+
+function game() {
+  for (let i = 0; i < 5; i++) {
+    playerSelection = prompt("Rock, Paper, Scissors, SHOOT!").toLowerCase();
+    const computerSelection = computerPlay();
+    let roundResult = playRound(playerSelection, computerSelection);
+    console.log(roundResult);
+    gameScore(roundResult);
+    console.log("Your Score is " + playerScore);
+    console.log("The computer's score is " + computerScore);
+  }
+}
+
+//create a function that increments the winners score
+//determine a winner based on the highest score
+
+function gameScore(roundResult) {
+  if (roundResult === playerWinRound) {
+    playerScore++;
+  } else if (roundResult === draw) {
+    drawScore++;
+  } else {
+    computerScore++;
+  }
+}
