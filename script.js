@@ -50,27 +50,27 @@ let computerWinGame = "You Lose. Computer wins the game!";
 //logs the result of each round to the console
 //keeps score of each player
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    playerSelection = prompt("Rock, Paper, Scissors, SHOOT!").toLowerCase();
-    const computerSelection = computerPlay();
-    let roundResult = playRound(playerSelection, computerSelection);
-    console.log(roundResult);
-    gameScore(roundResult);
-    console.log("Your Score is " + playerScore);
-    console.log("The computer's score is " + computerScore);
-  }
-}
+// function game() {
+//   for (let i = 0; i < 5; i++) {
+//     playerSelection = prompt("Rock, Paper, Scissors, SHOOT!").toLowerCase();
+//     const computerSelection = computerPlay();
+//     let roundResult = playRound(playerSelection, computerSelection);
+//     console.log(roundResult);
+//     gameScore(roundResult);
+//     console.log("Your Score is " + playerScore);
+//     console.log("The computer's score is " + computerScore);
+//   }
+// }
 
 //create a function that increments the winners score
 //determine a winner based on the highest score
 
-function gameScore(roundResult) {
-  if (roundResult === playerWinRound) {
-    playerScore++;
-  } else if (roundResult === draw) {
-    drawScore++;
-  } else {
-    computerScore++;
-  }
-}
+// function gameScore(roundResult) {
+//   if (roundResult === playerWinRound) {
+//     playerScore++;
+//   } else if (roundResult === draw) {
+//     drawScore++;
+//   } else {
+//     computerScore++;
+//   }
+// }
