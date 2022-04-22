@@ -79,3 +79,7 @@ document.getElementById("paper").addEventListener("click", () => {
 document.getElementById("scissors").addEventListener("click", () => {
   game("scissors");
 });
+
+document.getElementById("reset-game").addEventListener("click", function () {
+  location.reload();
+});
