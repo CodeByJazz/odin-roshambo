@@ -1,14 +1,32 @@
-//create a function called computerPlay.
-//computerPlay should randomly return either
-//'rock', 'paper', or 'scissors'.
+let playerScore = 0;
+let computerScore = 0;
+let drawScore = 0;
 
-const shapes = ["rock", "paper", "scissors"];
+//computerselection
 
-function computerPlay() {
-  return shapes[Math.floor(Math.random() * 3)];
-}
+let computerPlay = () => {
+  const shapes = ["rock", "paper", "scissors"];
+  computerSelection = shapes[Math.floor(Math.random() * 3)];
+};
 
-//create a function that plays a round of Rock Paper Scissors
+//playerselection
+
+document.getElementById("rock").addEventListener("click", function () {
+  let playerSelection = "rock";
+  console.log(playerSelection);
+});
+
+document.getElementById("paper").addEventListener("click", function () {
+  let playerSelection = "paper";
+  console.log(playerSelection);
+});
+
+document.getElementById("scissors").addEventListener("click", function () {
+  let playerSelection = "scissors";
+  console.log(playerSelection);
+});
+
+// create a function that plays a round of Rock Paper Scissors
 
 function playRound(playerSelection, computerSelection) {
   //rock choice
@@ -33,9 +51,9 @@ function playRound(playerSelection, computerSelection) {
 //create a variable for computerScore
 //create a variable for a draw
 
-let playerScore = 0;
-let computerScore = 0;
-let drawScore = 0;
+// let playerScore = 0;
+// let computerScore = 0;
+// let drawScore = 0;
 
 //create a variable for the outcomes of each round/game
 
@@ -51,15 +69,14 @@ let computerWinGame = "You Lose. Computer wins the game!";
 //keeps score of each player
 
 // function game() {
-//   for (let i = 0; i < 5; i++) {
-//     playerSelection = prompt("Rock, Paper, Scissors, SHOOT!").toLowerCase();
-//     const computerSelection = computerPlay();
-//     let roundResult = playRound(playerSelection, computerSelection);
-//     console.log(roundResult);
-//     gameScore(roundResult);
-//     console.log("Your Score is " + playerScore);
-//     console.log("The computer's score is " + computerScore);
-//   }
+//   //   for (let i = 0; i < 5; i++) {
+//   //     playerSelection = prompt("Rock, Paper, Scissors, SHOOT!").toLowerCase();
+//   const computerSelection = computerPlay();
+//   let roundResult = playRound(playerSelection, computerSelection);
+//   console.log(roundResult);
+//   gameScore(roundResult);
+//   console.log("Your Score is " + playerScore);
+//   console.log("The computer's score is " + computerScore);
 // }
 
 //create a function that increments the winners score
