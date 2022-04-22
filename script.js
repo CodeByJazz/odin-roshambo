@@ -6,59 +6,69 @@ let drawScore = 0;
 
 //computerselection
 
-const shapes = ["rock", "paper", "scissors"];
-
 function computerPlay() {
-  return shapes[Math.floor(Math.random() * 3)];
+  let computerChoices = ["rock", "paper", "scissors"];
+  let randomChoice = [Math.floor(Math.random() * 3)];
+  return computerChoices[randomChoice];
 }
-
-let computerSelection = computerPlay();
 
 let playerWinRound = "Player wins this round!";
 let computerWinRound = "Computer wins this round!";
-let draw = "It's a draw. Try again!";
+let draw = "It's a tie. Try again!";
 let playerWinGame = "Congratulations! You win the game!";
 let computerWinGame = "You Lose. Computer wins the game!";
 
-function playGame(playerSelection, computerSelection) {
-  computerSelection = computerPlay();
-  console.log(playerSelection);
-  console.log(computerSelection);
-  console.log(playerScore);
-  console.log(computerScore);
-
+function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     drawScore++;
-    return draw;
+    document.getElementById("game-result").innerHTML = draw;
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
     playerScore++;
-    return playerWinRound;
+    document.getElementById("game-result").innerHTML = playerWinRound;
+    document.getElementById("player-score").innerHTML = playerScore;
   }
   //paper choice
   else if (playerSelection === "paper" && computerSelection === "rock") {
     playerScore++;
-    return playerWinRound;
+    document.getElementById("game-result").innerHTML = playerWinRound;
+    document.getElementById("player-score").innerHTML = playerScore;
   }
   //scissors choice
   else if (playerSelection === "scissors" && computerSelection === "paper") {
     playerScore++;
-    return playerWinRound;
+    document.getElementById("game-result").innerHTML = playerWinRound;
+    document.getElementById("player-score").innerHTML = playerScore;
   } else {
     computerScore++;
-    return computerWinRound;
+    document.getElementById("game-result").innerHTML = computerWinRound;
+    document.getElementById("computer-score").innerHTML = computerScore;
   }
+}
+
+function scoreBoard() {
+  let scoreCountPlayer = document.querySelector("p");
+  scoreCountPlayer.innerHTML = "Your Score: " + playerScore;
+
+  document.getElementById("computerScore").innerHTML =
+    "Computer's Score: " + computerScore;
+
+  document.createElement("p").innerHTML =
+    "The computer chose: " + computerSelection;
 }
 
 document.getElementById("rock").addEventListener("click", function () {
   playGame("rock", computerSelection);
+  scoreBoard();
 });
 
 document.getElementById("paper").addEventListener("click", function () {
   playGame("paper", computerSelection);
+  scoreBoard();
 });
 
 document.getElementById("scissors").addEventListener("click", function () {
   playGame("scissors", computerSelection);
+  scoreBoard();
 });
 
 // create a function that plays a round of Rock Paper Scissors

@@ -9,20 +9,28 @@
   </head>
   <body>
     <div id="container">
-      <div class="content">
-        <div class="header">
-          <h2>Rock Paper Scissors... SHOOT!</h2>
-        </div>
-        <div class="scoreboard">
-          <p id="playerScore"></p>
-          <p id="computercore"></p>
-        </div>
-        <div id="playerChoice">
-          <button id="rock">Rock</button>
-          <button id="paper">Paper</button>
-          <button id="scissors">Scissors</button>
-        </div>
+      <div class="game-title">
+        <h2>Rock Paper Scissors... SHOOT!</h2>
       </div>
+
+      <div id="player-selection">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+      </div>
+
+      <div id="score-board">
+        <p id="computerSelection">
+          Make your move by selecting your weapon above
+        </p>
+        <span id="computer-result"></span>
+        <p id="game-result"></p>
+      </div>
+      <div>
+        <p class="player-score"></p>
+        <p class="computer-score"></p>
+      </div>
+      <div id="reset-game"></div>
     </div>
   </body>
 </html>
