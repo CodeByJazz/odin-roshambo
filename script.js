@@ -1,5 +1,3 @@
-let playerChoice;
-let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 let drawScore = 0;
@@ -19,120 +17,65 @@ let playerWinGame = "Congratulations! You win the game!";
 let computerWinGame = "You Lose. Computer wins the game!";
 
 function playRound(playerSelection, computerSelection) {
+  console.log(`Player Selected: "${playerSelection}"`);
+  console.log(`Computer selected: "${computerSelection}"`);
   if (playerSelection === computerSelection) {
     drawScore++;
-    document.getElementById("game-result").innerHTML = draw;
+    document.getElementById("round-result").innerHTML = draw;
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
     playerScore++;
-    document.getElementById("game-result").innerHTML = playerWinRound;
+    document.getElementById("round-result").innerHTML = playerWinRound;
     document.getElementById("player-score").innerHTML = playerScore;
   }
   //paper choice
   else if (playerSelection === "paper" && computerSelection === "rock") {
     playerScore++;
-    document.getElementById("game-result").innerHTML = playerWinRound;
+    document.getElementById("round-result").innerHTML = playerWinRound;
     document.getElementById("player-score").innerHTML = playerScore;
   }
   //scissors choice
   else if (playerSelection === "scissors" && computerSelection === "paper") {
     playerScore++;
-    document.getElementById("game-result").innerHTML = playerWinRound;
+    document.getElementById("round-result").innerHTML = playerWinRound;
     document.getElementById("player-score").innerHTML = playerScore;
   } else {
     computerScore++;
-    document.getElementById("game-result").innerHTML = computerWinRound;
+    document.getElementById("round-result").innerHTML = computerWinRound;
     document.getElementById("computer-score").innerHTML = computerScore;
   }
 }
 
-function scoreBoard() {
-  let scoreCountPlayer = document.querySelector("p");
-  scoreCountPlayer.innerHTML = "Your Score: " + playerScore;
+function game(playerSelection) {
+  let player = playerSelection;
+  let computer = computerPlay();
 
-  document.getElementById("computerScore").innerHTML =
-    "Computer's Score: " + computerScore;
+  playRound(player, computer);
 
-  document.createElement("p").innerHTML =
-    "The computer chose: " + computerSelection;
+  if (playerScore === 5) {
+    document.getElementById("game-result").innerHTML =
+      "Cogratulations! YOU WIN THE GAME!";
+    document.getElementById("round-result").innerHTML = "";
+  } else if (computerScore === 5) {
+    document.getElementById("game-result").innerHTML =
+      "Sorry, you lost. Computer Wins the game!";
+    document.getElementById("round-result").innerHTML = "";
+  } else if (playerScore > 5) {
+    document.getElementById("game-result").innerHTML = "GAME OVER.";
+    document.getElementById("round-result").innerHTML = "";
+  } else if (playerScore > 5) {
+    document.getElementById("game-result").innerHTML = "GAME OVER.";
+    document.getElementById("round-result").innerHTML = "";
+  }
 }
 
-document.getElementById("rock").addEventListener("click", function () {
-  playGame("rock", computerSelection);
-  scoreBoard();
+document.getElementById("rock").addEventListener("click", () => {
+  game("rock");
 });
 
-document.getElementById("paper").addEventListener("click", function () {
-  playGame("paper", computerSelection);
-  scoreBoard();
+document.getElementById("paper").addEventListener("click", () => {
+  game("paper");
 });
 
-document.getElementById("scissors").addEventListener("click", function () {
-  playGame("scissors", computerSelection);
-  scoreBoard();
+document.getElementById("scissors").addEventListener("click", () => {
+  game("scissors");
 });
-
-// create a function that plays a round of Rock Paper Scissors
-
-// let playRound = (playerSelection, computerSelection) => {
-//   //rock choice
-//   if (playerSelection === computerSelection) {
-//     return draw;
-//   } else if (playerSelection == "rock" && computerSelection == "scissors") {
-//     return playerWinRound;
-//   }
-//   //paper choice
-//   else if (playerSelection === "paper" && computerSelection === "rock") {
-//     return playerWinRound;
-//   }
-//   //scissors choice
-//   else if (playerSelection === "scissors" && computerSelection === "paper") {
-//     return playerWinRound;
-//   } else {
-//     return computerWinRound;
-//   }
-// };
-
-//create a variable for playerScore
-//create a variable for computerScore
-//create a variable for a draw
-
-// let playerScore = 0;
-// let computerScore = 0;
-// let drawScore = 0;
-
-//create a variable for the outcomes of each round/game
-
-// let playerWinRound = "Player wins this round!";
-// let computerWinRound = "Computer wins this round!";
-// let draw = "It's a draw. Try again!";
-// let playerWinGame = "Congratulations! You win the game!";
-// let computerWinGame = "You Lose. Computer wins the game!";
-
-//create a loop that plays 5 rounds of roshambo,
-//asks player for a selection with the prompt function
-//logs the result of each round to the console
-//keeps score of each player
-
-// function game() {
-//   //   for (let i = 0; i < 5; i++) {
-//   //     playerSelection = prompt("Rock, Paper, Scissors, SHOOT!").toLowerCase();
-//   const computerSelection = computerPlay();
-//   let roundResult = playRound(playerSelection, computerSelection);
-//   console.log(roundResult);
-//   gameScore(roundResult);
-//   console.log("Your Score is " + playerScore);
-//   console.log("The computer's score is " + computerScore);
-// }
-
-//create a function that increments the winners score
-//determine a winner based on the highest score
-
-// function gameScore(roundResult) {
-//   if (roundResult === playerWinRound) {
-//     playerScore++;
-//   } else if (roundResult === draw) {
-//     drawScore++;
-//   } else {
-//     computerScore++;
-//   }
-// }
